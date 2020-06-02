@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点名器</title>
+</head>
+<style>
+    .count{
+        width: 300px;
+        height: 240px;
+       // border: 1px saddlebrown solid;
+        margin:120px auto;
+     
+
+    }
+    button{
+        position: absolute;
+        //top: 196px;
+        top:60%;
+        left: 40%;
+        border:none;
+        width: 300px;
+        height: 40px;
+        border-radius: 45px;
+        background: #0ba1e4;
+        font-size: 15px;
+        color: #fff;
+        outline:none;
+    }
+    button:hover{
+        background:#30c2ff;
+    }
+    .show{
+        width: 300px;
+        height: 180px;
+        font-size: 3em;
+        background: #000000;
+        color: #00c9ff;
+        text-shadow: #00bbee 2px 3px 9px;
+        animation: change 2s  infinite;
+        position: absolute;
+        //top: 9px;
+        top:40%;
+        left: 40%;
+        text-align: center;
+        line-height: 150px;
+        border-radius:20px;
+
+    }
+    
+
+    /*@keyframes change {*/
+        /*from{*/
+            /*transform: scale(1);*/
+        /*}*/
+        /*to{*/
+            /*transform: scale(1.1);*/
+        /*}*/
+
+    /*}*/
+</style>
+<body>
+<div class="count">
+    <div class="show">点名机</div>
+    <button onclick="cunt(this)">START</button>
+</div>
+<script>
+    var show=document.getElementsByClassName('show')[0];
+    var state=0;
+    var arr=['貂蝉','刘备','吕布','诸葛亮','曹操','项羽','张飞',
+        '关羽','赵云','虞姬','蒙犽','鲁班','鲁班大师','大乔',
+        '小乔','周瑜','孙权','鲁肃','水镜大师','瑶','安琪拉',
+        '白起','马可波罗','狂铁','亚瑟','夏侯惇','夏侯渊','黄忠','后羿','甄姬','Miachel'];
+    function cunt(obj) {
+
+        state++;
+        if(state>1){
+            clearInterval(timer);
+            var str=arr[Math.floor(Math.random()*arr.length)];
+            show.innerHTML=str;
+            state=0;
+            obj.innerHTML='START'
+        }
+        else {
+          timer=  setInterval(function () {
+                var str=arr[Math.floor(Math.random()*arr.length)];
+               show.innerHTML=str;
+
+            });
+            obj.innerHTML='STOP'
+        }
+    }
+
+</script>
+</body>
+</html>
